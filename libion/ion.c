@@ -30,6 +30,10 @@
 #include <linux/ion.h>
 #include <ion/ion.h>
 
+#ifdef OMAP_ENHANCEMENT
+#include <linux/omap_ion.h>
+#endif
+
 int ion_open()
 {
         int fd = open("/dev/ion", O_RDWR);
@@ -151,6 +155,9 @@ int ion_sync_fd(int fd, int handle_fd)
 {
     struct ion_fd_data data = {
         .fd = handle_fd,
+#ifdef OMAP_EHANCEMENT
+        .dir = ION_BIDIRECTIONAL,
+#endif
     };
     return ion_ioctl(fd, ION_IOC_SYNC, &data);
 }

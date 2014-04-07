@@ -69,3 +69,12 @@ int ion_alloc_tiler(int fd, size_t w, size_t h, int fmt, unsigned int flags,
         return ret;
 }
 
+int ion_sync_fd_dir(int fd, int handle_fd, enum ion_data_direction dir)
+{
+    struct ion_fd_data data = {
+        .fd = handle_fd,
+        .dir = dir,
+    };
+    return ion_ioctl(fd, ION_IOC_SYNC, &data);
+}
+
