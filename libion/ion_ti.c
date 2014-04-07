@@ -78,3 +78,23 @@ int ion_sync_fd_dir(int fd, int handle_fd, enum ion_data_direction dir)
     return ion_ioctl(fd, ION_IOC_SYNC, &data);
 }
 
+int ion_lookup_share_fd(int fd, int alloc_fd, int num_fds, int *share_fds)
+{
+        int ret;
+        if (!share_fds)
+            return -1;
+
+        struct omap_ion_lookup_share_fd lookup_data;
+        lookup_data.alloc_fd = alloc_fd;
+        lookup_data.num_fds = num_fds;
+        lookup_data.share_fds = share_fds;
+
+        struct ion_custom_data custom_data = {
+                .cmd = OMAP_ION_LOOKUP_SHARE_FD,
+                .arg = (unsigned long)(&lookup_data),
+        };
+
+        ret = ioctl(fd, ION_IOC_CUSTOM, &custom_data);
+
+        return ret;
+}

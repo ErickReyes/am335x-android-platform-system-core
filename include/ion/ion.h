@@ -42,6 +42,7 @@ int ion_import(int fd, int share_fd, struct ion_handle **handle);
 int ion_alloc_tiler(int fd, size_t w, size_t h, int fmt, unsigned int flags,
 		    struct ion_handle **handle, size_t *stride);
 int ion_sync_fd_dir(int fd, int handle_fd, enum ion_data_direction dir);
+int ion_lookup_share_fd(int fd, int alloc_fd, int num_fds, int *share_fds);
 #endif
 
 
