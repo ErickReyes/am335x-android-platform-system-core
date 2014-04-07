@@ -29,4 +29,12 @@ LOCAL_MODULE := ion_ti_test2
 LOCAL_MODULE_TAGS := optional tests
 LOCAL_SHARED_LIBRARIES := liblog
 include $(BUILD_EXECUTABLE)
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := testlib.c ion.c ion_ti.c ion_tiler_test.c
+LOCAL_MODULE := ion_tiler_test
+LOCAL_MODULE_TAGS := optional tests
+LOCAL_SHARED_LIBRARIES := liblog
+include $(BUILD_EXECUTABLE)
+
 endif
