@@ -22,6 +22,9 @@
 #define __SYS_CORE_ION_H
 
 #include <linux/ion.h>
+#ifdef OMAP_ENHANCEMENT
+#include <linux/omap_ion.h>
+#endif
 
 __BEGIN_DECLS
 
