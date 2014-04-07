@@ -38,6 +38,12 @@ int ion_map(int fd, struct ion_handle *handle, size_t length, int prot,
 int ion_share(int fd, struct ion_handle *handle, int *share_fd);
 int ion_import(int fd, int share_fd, struct ion_handle **handle);
 
+#ifdef OMAP_ENHANCEMENT
+int ion_alloc_tiler(int fd, size_t w, size_t h, int fmt, unsigned int flags,
+		    struct ion_handle **handle, size_t *stride);
+#endif
+
+
 __END_DECLS
 
 #endif /* __SYS_CORE_ION_H */
