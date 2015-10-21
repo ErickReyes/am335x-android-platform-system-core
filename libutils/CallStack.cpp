@@ -109,6 +109,11 @@ void CallStack::update(int32_t ignoreDepth, int32_t maxDepth, pid_t tid) {
     mCount = count > 0 ? count : 0;
 }
 
+// CDS: for compatabilty with JB 4.3, needed for gralloc.omap3.so
+void CallStack::update(int32_t ignoreDepth, int32_t maxDepth) {
+    update(ignoreDepth, maxDepth, CURRENT_THREAD);
+}
+
 void CallStack::log(const char* logtag, android_LogPriority priority, const char* prefix) const {
     LogPrinter printer(logtag, priority, prefix, /*ignoreBlankLines*/false);
     print(printer);

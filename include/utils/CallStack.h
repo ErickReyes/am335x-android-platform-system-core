@@ -66,7 +66,10 @@ public:
     void clear();
 
     // Immediately collect the stack traces for the specified thread.
-    void update(int32_t ignoreDepth=1, int32_t maxDepth=MAX_DEPTH, pid_t tid=CURRENT_THREAD);
+    void update(int32_t ignoreDepth, int32_t maxDepth, pid_t tid);
+
+    // CDS: for compatabilty with JB 4.3, needed for gralloc.omap3.so
+    void update(int32_t ignoreDepth=1, int32_t maxDepth=MAX_DEPTH);
 
     // Dump a stack trace to the log using the supplied logtag.
     void log(const char* logtag,
